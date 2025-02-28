@@ -1,0 +1,67 @@
+import { VerticalBox, LineEdit, ListView, HorizontalBox } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    full-screen: false;
+
+    in-out property <[string]> todo-items: [];
+    in-out property <string> new-item: "";
+
+    callback add-item(string);
+    callback remove-item(int);
+
+    background:  true ? @linear-gradient(90deg, #0384fc 0%, #e834eb 100%) : #000;
+
+    GridLayout {
+        padding: 50px;
+        spacing: 25px;
+        Row {
+            Text {
+                text: "To-Do List";
+                horizontal-alignment: center;
+                font-size: 44px;
+                font-weight: 900;
+                color: black;
+            }
+        }
+        Row {
+            item := LineEdit {
+                placeholder-text: "Enter your task...";
+                horizontal-alignment: center;
+                font-size: 36px;
+                height: 50px;
+                width: 350px;
+                text <=> root.new-item;
+
+                accepted => {
+                    root.add-item(item.text);
+                }
+            }
+        }
+        Row {
+            VerticalBox {
+                Rectangle {
+                    border-color: black;
+                    border-width: 2px;
+                    border-radius: 12px;
+                    height: 500px;
+                    width: 350px;
+                    ListView {
+                        padding: 10px;
+                        for todo[idx] in root.todo-items: HorizontalBox {
+                            TouchArea {
+                                Text {
+                                    font-size: 32px;
+                                    font-weight: 200;
+                                    text: todo;
+                                }
+                                clicked => {
+                                   root.remove-item(idx);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
