@@ -23,16 +23,19 @@ export component AppWindow inherits Window {
             }
         }
         Row {
-            item := LineEdit {
-                placeholder-text: "Enter your task...";
-                horizontal-alignment: center;
-                font-size: 32px;
-                height: 50px;
-                width: 450px;
-                text <=> root.new-item;
+            HorizontalBox {
+                LineEdit {
+                    placeholder-text: "Enter your task...";
+                    horizontal-alignment: center;
+                    font-size: 32px;
+                    height: 50px;
+                    width: 450px;
+                    padding: 15px;
+                    text <=> root.new-item;
 
-                accepted => {
-                    root.add-item(item.text);
+                    accepted => {
+                        root.add-item(self.text);
+                    }
                 }
             }
         }
