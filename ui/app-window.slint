@@ -9,6 +9,8 @@ export component AppWindow inherits Window {
     callback add-item(string);
     callback remove-item(int);
 
+    title: "ToDo";
+    icon: @image-url("img/todo-logo.png");
     background:  true ? @linear-gradient(90deg, #0384fc 0% ,#5c56d6 50% , #e834eb 100%) : #000;
     GridLayout {
         padding: 50px;
