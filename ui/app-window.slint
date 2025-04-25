@@ -11,7 +11,7 @@ export component AppWindow inherits Window {
 
     title: "ToDo";
     icon: @image-url("img/todo-logo.png");
-    background:  true ? @linear-gradient(90deg, #0384fc 0% ,#5c56d6 50% , #e834eb 100%) : #000;
+    background:  true ? @linear-gradient(90deg,#5c56d6 0% ,#7256d6 33%, #ab34eb 55% ,#d334eb 77% ,#e834eb 100%) : #000;
     GridLayout {
         padding: 50px;
         spacing: 25px;
@@ -20,7 +20,7 @@ export component AppWindow inherits Window {
                 text: "To-Do List";
                 horizontal-alignment: center;
                 font-size: 44px;
-                font-family: "Copperlate";
+                font-family: "Copperplate";
                 font-weight: 900;
                 color: black;
             }
@@ -34,11 +34,14 @@ export component AppWindow inherits Window {
                     height: 50px;
                     width: 450px;
                     padding: 15px;
+                    opacity: 0.8;
+
                     text <=> root.new-item;
 
                     accepted => {
                         root.add-item(self.text);
                     }
+
                 }
             }
         }
