@@ -10,7 +10,7 @@ export component AppWindow inherits Window {
     callback remove-item(int);
 
     title: "ToDo";
-    icon: @image-url("img/todo-logo.png");
+    icon: @image-url("img/todo-logo.svg");
     background:  true ? @linear-gradient(90deg,#5c56d6 0% ,#7256d6 33%, #ab34eb 55% ,#d334eb 77% ,#e834eb 100%) : #000;
     GridLayout {
         padding: 50px;
@@ -56,15 +56,25 @@ export component AppWindow inherits Window {
                     ListView {
                         width: 450px;
                         padding: 10px;
-                        for todo[idx] in root.todo-items: HorizontalBox {
-                            TouchArea {
-                                Text {
-                                    font-size: 24px;
-                                    font-weight: 100;
-                                    text: todo;
-                                }
-                                clicked => {
-                                   root.remove-item(idx);
+                        for todo[idx] in root.todo-items: Rectangle {
+                            background: Math.mod(idx, 2) == 0 ? #ffffff0f : #ffffff40; // macOS-style alternation
+                            border-radius: 8px;
+                            HorizontalBox {
+                                padding: 12px;
+                                TouchArea {
+                                    Rectangle {
+                                        background: transparent;
+                                        Text {
+                                            font-size: 24px;
+                                            font-weight: 100;
+                                            text: todo;
+                                            color: black;
+                                        }
+
+                                    }
+                                     clicked => {
+                                        root.remove-item(idx);
+                                     }
                                 }
                             }
                         }
