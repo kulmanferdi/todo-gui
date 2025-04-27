@@ -10,18 +10,18 @@ export component AppWindow inherits Window {
     callback remove-item(int);
 
     title: "ToDo";
-    icon: @image-url("img/todo-logo.svg");
+    /*icon: @image-url("img/ t odo-logo.svg"); remove spcaces*/
     background:  true ? @linear-gradient(90deg,#5c56d6 0% ,#7256d6 33%, #ab34eb 55% ,#d334eb 77% ,#e834eb 100%) : #000;
     GridLayout {
-        padding: 50px;
-        spacing: 25px;
+        padding: 33px;
+        spacing: 10px;
         Row {
             Text {
                 text: "To-Do List";
                 horizontal-alignment: center;
-                font-size: 44px;
+                font-size: 50px;
                 font-family: "Copperplate";
-                font-weight: 900;
+                font-weight: 700;
                 color: black;
             }
         }
@@ -30,10 +30,10 @@ export component AppWindow inherits Window {
                 LineEdit {
                     placeholder-text: "Enter your task...";
                     horizontal-alignment: center;
-                    font-size: 32px;
-                    height: 50px;
+                    font-size: 25px;
+                    height: 45px;
                     width: 450px;
-                    padding: 15px;
+                    padding: 20px;
                     opacity: 0.8;
 
                     text <=> root.new-item;
@@ -57,7 +57,7 @@ export component AppWindow inherits Window {
                         width: 450px;
                         padding: 10px;
                         for todo[idx] in root.todo-items: Rectangle {
-                            background: Math.mod(idx, 2) == 0 ? #ffffff0f : #ffffff40; // macOS-style alternation
+                            background: Math.mod(idx, 2) == 0 ? #ffffff0f : #ffffff40;
                             border-radius: 8px;
                             HorizontalBox {
                                 padding: 12px;
