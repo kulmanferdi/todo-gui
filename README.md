@@ -1,5 +1,13 @@
-# To do List app
+# To-Do List
 
-A simple to do list application.
+## About
+A simple To-Do list application.  
+It saves your tasks to a **JSON** file, so they are automatically loaded each time you start the app.
+Click on a task to remove it instantly.
 
-![image](images/ui.png)
+## Technologies
+- Backend: Rust
+- Frontend: Slint
+
+## Screenshot
+![image](images/todo.png)
