@@ -5,13 +5,21 @@ export component AppWindow inherits Window {
 
     in-out property <[string]> todo-items: [];
     in-out property <string> new-item: "";
+    in property <bool> use-gradient: true;
 
     callback add-item(string);
     callback remove-item(int);
 
     title: "ToDo";
     icon: @image-url("img/todo-logo.svg");
-    background:  true ? @linear-gradient(90deg,#5c56d6 0% ,#7256d6 33%, #ab34eb 55% ,#d334eb 77% ,#e834eb 100%) : #000;
+    background: use-gradient ? @linear-gradient(
+        90deg,
+        #5c56d6 0%,
+        #7256d6 33%,
+        #ab34eb 55%,
+        #d334eb 77%,
+        #e834eb 100%
+    ) : #000;
     GridLayout {
         padding: 33px;
         spacing: 10px;
@@ -62,19 +70,16 @@ export component AppWindow inherits Window {
                             HorizontalBox {
                                 padding: 12px;
                                 TouchArea {
-                                    Rectangle {
-                                        background: transparent;
-                                        Text {
-                                            font-size: 24px;
-                                            font-weight: 100;
-                                            text: todo;
-                                            color: black;
-                                        }
-
-                                    }
-                                     clicked => {
-                                        root.remove-item(idx);
-                                     }
+                                   Rectangle {
+                                       background: transparent;
+                                       Text {
+                                           font-size: 24px;
+                                           font-weight: 100;
+                                           text: todo;
+                                           color: black;
+                                       }
+                                   }
+                                   clicked => { root.remove-item(idx); }
                                 }
                             }
                         }
