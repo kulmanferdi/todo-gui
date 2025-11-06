@@ -11,3 +11,5 @@
 **/*.rs.bk
 
 todo_items.json
+.DS_store
+ui/.DS_store
